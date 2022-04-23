@@ -1,7 +1,8 @@
-import hashlib 
 import argparse
+import hashlib
 import pathlib
 import shutil
+
 from termcolor import colored
 
 VERSION = "0.0.1"
@@ -22,7 +23,7 @@ print(colored(f"""
 
 parser = argparse.ArgumentParser(prog='digest', description='Compare Hash digests of files')
 parser.add_argument('file', metavar='file', nargs=1, type=pathlib.Path,
-                    help='Archivo del  que se quiere calcular los hashes' )
+                    help='Archivo del  que se quiere calcular los hashes')
 parser.add_argument('--hash-type', dest='ht', nargs='*', default='md5', choices=hashlib.algorithms_available,
                     help='Digest types that want to be compared')
 parser.add_argument('--hash-digest', dest='hd', nargs='*', help='Digests that want to be compared')
@@ -50,8 +51,3 @@ for item in zip(results.ht, results.hd):
         print(colored(f'Expected hash:   << {item[1]}', color='green'))
 
     print()
-
-
-
-
-
